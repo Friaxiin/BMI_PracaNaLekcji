@@ -15,12 +15,12 @@ namespace BMI_PracaNaLekcji
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResultsPage : ContentPage
     {
+        public List<BMIResult> Results = DataFile.LoadTxt();
         public ResultsPage()
         {
             InitializeComponent();
             //Load();
-            List<BMIResult> results =  DataFile.LoadTxt();
-            BMIList.ItemsSource = results;
+            BMIList.ItemsSource = Results;
         }
         public void Load()
         {
@@ -39,7 +39,13 @@ namespace BMI_PracaNaLekcji
         private void DeleteBMI(object sender, EventArgs e)
         {
             BMIResult selectedItem = (BMIResult)BMIList.SelectedItem;
-            DataFile.DeleteLine(selectedItem);
+            //List<BMIResult> results = DataFile.LoadTxt();
+            DataFile.DeleteLine(Results, selectedItem);
+        }
+
+        private void Back(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync();
         }
     }
 }

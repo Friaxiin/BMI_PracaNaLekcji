@@ -13,6 +13,7 @@ namespace BMI_PracaNaLekcji
     public partial class MainPage : ContentPage
     {
         List<BMIResult> BMIresults = DataFile.LoadTxt();
+        //DataFile.LoadTxt();
         public MainPage()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace BMI_PracaNaLekcji
                 return;
             }
 
-            if (!int.TryParse(weight_Entry.Text, out int weight) || !int.TryParse(height_Entry.Text, out int height) || weight < 20 || height < 100)
+            if (!int.TryParse(weight_Entry.Text, out int weight) || !int.TryParse(height_Lbl.Text, out int height) || weight < 20 || height < 100)
             {
                 await DisplayAlert("Błąd", "Podano błędny wzrost lub wagę", "OK");
                 return;
@@ -89,13 +90,13 @@ namespace BMI_PracaNaLekcji
 
         private async void SaveBMI(object sender, EventArgs e)
         {
-            string title = await DisplayPromptAsync("Tytuł", "Podaj tytuł", "OK", "Anuluj", "tytuł");
+            string title = await DisplayPromptAsync("Tytuł", "Nadaj tytuł", "OK", "Anuluj", "tytuł");
             if (string.IsNullOrWhiteSpace(title))
             {
                 await DisplayAlert("Błąd", "Podaj poprawny tytuł", "OK");
                 return;
             }
-            BMIResult bmi = new BMIResult(title, DateTime.UtcNow, int.Parse(weight_Entry.Text), int.Parse(height_Entry.Text), genderInvis.Text, float.Parse(scoreLbl.Text), resultLbl.Text);
+            BMIResult bmi = new BMIResult(title, DateTime.UtcNow, int.Parse(weight_Entry.Text), int.Parse(height_Lbl.Text), genderInvis.Text, float.Parse(scoreLbl.Text), resultLbl.Text);
 
             BMIresults.Add(bmi);
 
@@ -124,6 +125,13 @@ namespace BMI_PracaNaLekcji
 
             
             */
+        }
+
+        private void SliderValue(object sender, ValueChangedEventArgs e)
+        {
+            int value = (int)slider.Value;
+
+            height_Lbl.Text = value.ToString();
         }
     }
 }

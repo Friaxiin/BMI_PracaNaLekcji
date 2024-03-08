@@ -21,7 +21,8 @@
 
         <Label Text="Wzrost" FontSize="20"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-            <Entry x:Name="height_Entry" WidthRequest="150"/>
+            <Slider WidthRequest="200" BackgroundColor="LightGray" ValueChanged="SliderValue" x:Name="slider" Maximum="300" Minimum="100" Value="150"/>
+            <Label x:Name="height_Lbl"/>
             <Label Text=" cm"/>
         </StackLayout>
 
@@ -32,7 +33,7 @@
             <Label Text=" kg"/>
         </StackLayout>
 
-        <Button Text="Oblicz" Clicked="CalculateBMI"/>
+        <Button Text="Oblicz" Clicked="CalculateBMI" HorizontalOptions="Center" WidthRequest="100"/>
 
         <Label x:Name="scoreLbl" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
         <Label x:Name="resultLbl" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>

@@ -57,21 +57,18 @@ namespace BMI_PracaNaLekcji
                 return null;
             }
         }
-        public static void DeleteLine(BMIResult bMIResult)
+        public static void DeleteLine(List<BMIResult> results, BMIResult bMIResult)
         {
             string path = App.DbPath;
 
             if (File.Exists(path))
             {
+                results.Remove(bMIResult);
 
-                List<BMIResult> bMIResultsList = LoadTxt();
+                WriteToFile(results);
 
-                bMIResultsList.Remove(bMIResult);
-
-                WriteToFile(bMIResultsList);
-
-                LoadTxt();
             }
+            LoadTxt();
         }
     }
 }
