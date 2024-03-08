@@ -12,6 +12,7 @@ namespace BMI_PracaNaLekcji
 {
     public partial class MainPage : ContentPage
     {
+        List<BMIResult> BMIresults = DataFile.LoadTxt();
         public MainPage()
         {
             InitializeComponent();
@@ -94,6 +95,17 @@ namespace BMI_PracaNaLekcji
                 await DisplayAlert("Błąd", "Podaj poprawny tytuł", "OK");
                 return;
             }
+            BMIResult bmi = new BMIResult(title, DateTime.UtcNow, int.Parse(weight_Entry.Text), int.Parse(height_Entry.Text), genderInvis.Text, float.Parse(scoreLbl.Text), resultLbl.Text);
+
+            BMIresults.Add(bmi);
+
+            DataFile.WriteToFile(BMIresults);
+
+            saveBtn.IsEnabled = false;
+            saveBtn.IsVisible = false;
+
+            await DisplayAlert("Wydarzenie", "Pomyślnie dodano", "OK");
+            /*
             string path = App.DbPath;
             string file = File.ReadAllText(path);
             List<BMIResult> results = JsonConvert.DeserializeObject<List<BMIResult>>(file);
@@ -110,10 +122,8 @@ namespace BMI_PracaNaLekcji
             string serializedBMI = JsonConvert.SerializeObject(results);
             File.WriteAllText(path, serializedBMI);
 
-            saveBtn.IsEnabled = false;
-            saveBtn.IsVisible = false;
-
-            await DisplayAlert("Wydarzenie", "Pomyślnie dodano", "OK");
+            
+            */
         }
     }
 }

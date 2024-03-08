@@ -11,7 +11,9 @@ namespace BMI_PracaNaLekcji
         {
             get
             {
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PressXto.json");
+                //return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PressXto.json");
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BMIdb3.txt");
+                return path;
             }
         }
         public App()

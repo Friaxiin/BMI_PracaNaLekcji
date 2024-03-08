@@ -2,49 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BMI_PracaNaLekcji.ResultsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="BMIList" RowHeight="200">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Tytuł:"/>
-                                    <Label Text="{Binding Title}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Data:"/>
-                                    <Label Text="{Binding Date}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Wzrost:"/>
-                                    <Label Text="{Binding Height}"/>
-                                    <Label Text="cm"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Waga:"/>
-                                    <Label Text="{Binding Weight}"/>
-                                    <Label Text="kg"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Wynik:"/>
-                                    <Label Text="{Binding Score}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Płeć:"/>
-                                    <Label Text="{Binding Gender}"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Typ:"/>
-                                    <Label Text="{Binding Result}"/>
-                                </StackLayout>
-                                <Line BackgroundColor="Black" HeightRequest="3"/>
+    <ContentPage.ToolbarItems>
+       <ToolbarItem Text="Przejdź do zapisanych" Clicked="DeleteBMI"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <ListView x:Name="BMIList" RowHeight="200">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Tytuł:"/>
+                                <Label Text="{Binding Title}"/>
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Data:"/>
+                                <Label Text="{Binding Date}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Wzrost:"/>
+                                <Label Text="{Binding Height}"/>
+                                <Label Text="cm"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Waga:"/>
+                                <Label Text="{Binding Weight}"/>
+                                <Label Text="kg"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Wynik:"/>
+                                <Label Text="{Binding Score}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Płeć:"/>
+                                <Label Text="{Binding Gender}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Typ:"/>
+                                <Label Text="{Binding Result}"/>
+                            </StackLayout>
+                            <Line BackgroundColor="Black" HeightRequest="3"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

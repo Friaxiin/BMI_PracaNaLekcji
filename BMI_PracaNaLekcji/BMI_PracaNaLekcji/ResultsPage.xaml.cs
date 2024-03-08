@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Shapes;
 using Xamarin.Forms.Xaml;
 
 namespace BMI_PracaNaLekcji
@@ -17,7 +18,9 @@ namespace BMI_PracaNaLekcji
         public ResultsPage()
         {
             InitializeComponent();
-            Load();
+            //Load();
+            List<BMIResult> results =  DataFile.LoadTxt();
+            BMIList.ItemsSource = results;
         }
         public void Load()
         {
@@ -31,6 +34,11 @@ namespace BMI_PracaNaLekcji
 
                 BMIList.ItemsSource = results;
             }
+        }
+
+        private void DeleteBMI(object sender, EventArgs e)
+        {
+
         }
     }
 }
