@@ -38,7 +38,8 @@ namespace BMI_PracaNaLekcji
 
         private void DeleteBMI(object sender, EventArgs e)
         {
-
+            BMIResult selectedItem = (BMIResult)BMIList.SelectedItem;
+            DataFile.DeleteLine(selectedItem);
         }
     }
 }

@@ -63,33 +63,14 @@ namespace BMI_PracaNaLekcji
 
             if (File.Exists(path))
             {
-                List<string> results = File.ReadAllLines(path).ToList();
-                List<BMIResult> bMIResultsList = new List<BMIResult>();
 
-                foreach (var line in results)
-                {
-                    string[] entries = line.Split(';');
-
-                    if (entries.Length >= 1)
-                    {
-                        BMIResult newBMIResult = new BMIResult();
-
-                        newBMIResult.Title = entries[0];
-                        newBMIResult.Date = DateTime.Parse(entries[1]);
-                        newBMIResult.Weight = int.Parse(entries[2]);
-                        newBMIResult.Height = int.Parse(entries[3]);
-                        newBMIResult.Gender = entries[4];
-                        newBMIResult.Score = float.Parse(entries[5]);
-                        newBMIResult.Result = entries[6];
-
-                        bMIResultsList.Add(newBMIResult);
-                    }
-                }
-
+                List<BMIResult> bMIResultsList = LoadTxt();
 
                 bMIResultsList.Remove(bMIResult);
 
                 WriteToFile(bMIResultsList);
+
+                LoadTxt();
             }
         }
     }
